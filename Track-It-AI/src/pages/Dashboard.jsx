@@ -44,7 +44,7 @@ function Dashboard() {
       }
 
       // Call the backend endpoint to process emails.
-      const response = await axios.post("http://localhost:5000/api/email/process-emails", { token });
+      const response = await axios.post("https://trackit-new.onrender.com/api/email/process-emails", { token });
       setProcessResult(response.data);
     } catch (error) {
       console.error("Error processing emails:", error);
