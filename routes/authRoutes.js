@@ -1,5 +1,5 @@
 const express = require("express");
-const admin = require("../firebaseadmin"); // Firebase Admin SDK, properly initialized
+const admin = require("../firebaseAdmin"); // Firebase Admin SDK, properly initialized
 const User = require("../models/user");
 const ResponseModel = require("../models/response");
 require("dotenv").config();
