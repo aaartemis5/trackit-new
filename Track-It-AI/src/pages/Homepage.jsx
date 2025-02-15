@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import ThemeToggle from "../components/ThemeToggle";
-import "../styles/HomePage.css";
+import "../styles/Homepage.css";
 import bg from '../assets/bg-image.jpg';
 import Footer from "../components/Footer";
 
