@@ -1,6 +1,6 @@
 // routes/googleAuthRoute.js
 const express = require("express");
-const admin = require("../firebaseadmin"); // Ensure Firebase Admin SDK is properly set up
+const admin = require("../firebaseAdmin"); // Ensure Firebase Admin SDK is properly set up
 const User = require("../models/user");
 require("dotenv").config();
 
