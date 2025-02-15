@@ -1,0 +1,133 @@
+/* Main container with sidebar */
+.addeventjob-container {
+  background: rgb(25,17,41);
+  background: linear-gradient(338deg, rgba(25,17,41,1) 0%, rgba(109,89,171,1) 50%, rgba(40,13,87,1) 100%);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Sidebar */
+
+
+/* Form section */
+.form-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 20px;
+  margin: 20px;
+  margin-top: 4rem;
+  margin-left: 250px;
+  max-width: 500px;
+  height: 700px;
+  background: transparent;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+/* Form title */
+.form-container h2 {
+  color: whitesmoke;
+  margin-bottom: 70px;
+}
+.form-container form {
+  margin-top: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  background-color:transparent;
+  box-shadow: none;
+  color: whitesmoke;
+}
+/* Input fields */
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: rgba(244, 239, 239, 0.5);
+  color: var(--text-color);
+  transition: background 0.3s ease, border 0.3s ease;
+}
+textarea{
+  width: 100%;
+  padding: 50px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: rgba(244, 239, 239, 0.5);
+  color: var(--text-color);
+  transition: background 0.3s ease, border 0.3s ease;
+}
+textarea{
+  resize: none;
+}
+
+
+/* Button */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: var(--btn-bg);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: var(--btn-hover);
+}
+
+/* Theme Toggle (if inside the page, adjust for navbar) */
+
+
+/* Theme Variables */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333;
+  --sidebar-bg: #f4f4f4;
+  --form-bg: #ffffff;
+  --border-color: #ddd;
+  --input-bg: #f9f9f9;
+  --btn-bg: #007bff;
+  --btn-hover: #0056b3;
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #e4e4e4;
+  --sidebar-bg: #1e1e1e;
+  --form-bg: #1a1a1a;
+  --border-color: #444;
+  --input-bg: #292929;
+  --btn-bg: #0056b3;
+  --btn-hover: #003f7f;
+}
+
+/* Responsive Design */
+/* @media (max-width: 768px) {
+  .addeventjob-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .form-container {
+    width: 90%;
+    margin-left: 0;
+  }
+} */

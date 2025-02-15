@@ -1,0 +1,98 @@
+/* Light Theme */
+:root {
+    --bg-color: #f9f9f9;
+    --text-color: #222;
+    --card-bg: #fff;
+    --border-color: #ddd;
+    --input-bg: #fff;
+    --button-bg: #ff4d4d;
+    --button-hover: #cc0000;
+  }
+  
+  /* Dark Theme */
+  [data-theme="dark"] {
+    --bg-color: #1e1e1e;
+    --text-color: #f9f9f9;
+    --card-bg: #292929;
+    --border-color: #444;
+    --input-bg: #333;
+    --button-bg: #d9534f;
+    --button-hover: #a94442;
+  }
+  .profile-content{
+    background: rgb(25,17,41);
+    background: linear-gradient(338deg, rgba(25,17,41,1) 0%, rgba(109,89,171,1) 50%, rgba(40,13,87,1) 100%);
+  }
+  
+  .profile-container {
+    margin-left: 250px; /* Sidebar spacing */
+    padding: 2rem;
+    margin-top: 3.2rem;
+    background: transparent;
+    color: whitesmoke;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-card {
+    background-color: rgba(244, 239, 239, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  
+  .profile-pic {
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 1rem;
+    border: 3px solid var(--border-color);
+    cursor: pointer;
+  }
+  
+  .profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  #imageUpload {
+    display: none;
+  }
+  
+  .profile-details input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background: var(--input-bg);
+    color: var(--text-color);
+    font-size: 16px;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  
+  .logout-btn {
+    background: var(--button-bg);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .logout-btn:hover {
+    background: var(--button-hover);
+  }
+  

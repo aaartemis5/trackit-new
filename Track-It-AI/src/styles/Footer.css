@@ -1,0 +1,27 @@
+.footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background: rgb(5,4,7);
+    background: linear-gradient(90deg, rgba(5,4,7,1) 0%, rgba(39,29,61,1) 47%, rgba(44,29,88,1) 100%);
+    color:whitesmoke;
+    font-size: 1rem;
+    padding: 0.4rem 0 0.3rem 0;
+    bottom: 0;
+    position: fixed;
+  }
+  
+  .footer-content {
+    
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Dark & Light Mode */
+.footer-content p{
+    color: whitesmoke;
+    font-weight: 500;
+    font-size: 1rem;
+}
+  

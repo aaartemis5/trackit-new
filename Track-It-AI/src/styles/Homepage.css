@@ -1,0 +1,81 @@
+/* Global Styling */
+.homepage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: rgb(25,17,41);
+    background: linear-gradient(338deg, rgba(25,17,41,1) 0%, rgba(109,89,171,1) 50%, rgba(40,13,87,1) 100%);
+    color: var(--text-color);
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Title Styling */
+  .homepage .main-text h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #007bff;
+  }
+  .homepage .main-text h1 span {
+    color: rgb(245, 240, 249);
+  }
+
+  .hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    padding: 0 10%;
+    gap: 2rem;
+    min-height: 50vh;
+  }
+  .main-text {
+    max-width: 600px;
+    /* background-color: rgba(244, 239, 239, 0.2); */
+    padding: 20px;
+    border-radius: 10px;
+  }
+  .image img {
+    max-width: 500px;
+    width: 100%;
+    border-radius: 10px;
+  }
+  /* Paragraph Styling */
+  .homepage p {
+    font-size: 1.2rem;
+    color: rgb(214, 207, 207);
+    text-align:left;
+    margin-bottom: 2rem;
+    font-weight: 600;
+  }
+  
+  /* Button Styling */
+  .btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--btn-text);
+    background-color: var(--btn-bg);
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn:hover {
+    background-color: var(--btn-hover);
+    transform: scale(1.05);
+  }
+  
+  /* Theme Variables */
+  :root {
+    --bg-color: #f8f9fa;
+    --text-color: #212529;
+    --btn-bg: #007bff;
+    --btn-text: #ffffff;
+    --btn-hover: #0056b3;
+  }
+  
+  

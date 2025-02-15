@@ -1,0 +1,112 @@
+/* Light Theme */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #09287c;
+  --form-bg: #f0f0f0;
+  --button-bg: #1a73e8;
+  --button-text: #ffffff;
+  --button-hover: #1669c1;
+  --google-button-bg: #1669c1;
+  --google-button-hover: #1669c1;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #078caa;
+  --form-bg: #1e1e1e;
+  --button-bg: #2979ff;
+  --button-text: #ffffff;
+  --button-hover: #1c54b2;
+  --google-button-bg: #1669c1;
+  --google-button-hover: #1669c1;
+}
+
+/* Login Page */
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: rgb(25,17,41);
+    background: linear-gradient(338deg, rgba(25,17,41,1) 0%, rgba(109,89,171,1) 50%, rgba(40,13,87,1) 100%);
+  color: var(--text-color);
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  color: whitesmoke;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(244, 239, 239, 0.1);
+
+  padding: 1.5rem;
+  width: 300px;
+  height: 270px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+input {
+  width: 240px;
+  padding: 10px;
+  border: 1px solid var(--text-color);
+  border-radius: 5px;
+  background: transparent;
+  color: var(--text-color);
+}
+
+input::placeholder {
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* Login Button */
+button[type="submit"] {
+  background: var(--button-bg);
+  color: var(--button-text);
+}
+
+button[type="submit"]:hover {
+  background: var(--button-hover);
+}
+
+/* OAuth Buttons */
+.oauth-buttons {
+  margin-top: 0rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.google-login {
+  background: var(--google-button-bg);
+  color: var(--button-text);
+}
+
+.google-login:hover {
+  background: var(--google-button-hover);
+}
