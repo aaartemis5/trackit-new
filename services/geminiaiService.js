@@ -15,10 +15,12 @@ const GEMINI_BASE_URL = `https://generativelanguage.googleapis.com/v1beta/models
 async function processEmailWithGemini(emailData) {
   // Updated prompt with strict instructions
   const prompt = `
-Extract the following details from the email:
+Extract event details from the following email. First, determine if this email represents an important event (such as a job deadline, meeting, or registration deadline). If it does, extract the following details; if not, return all fields as null.
+  Extract the following details from the email:
 - Event Name (if any)
 - Event Date or Deadline
 - Additional event details
+
 
 Email Data:
 Subject: ${emailData.subject}
