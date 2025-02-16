@@ -1,3 +1,4 @@
+// services/geminiaiservice.js
 const axios = require('axios');
 const sleep = require('util').promisify(setTimeout);
 
@@ -6,12 +7,13 @@ const RPM_LIMIT = 3;
 let requestCount = 0;
 let requestStartTime = Date.now();
 
-// Gemini endpoint and model details based on the curl sample.
-// (Adjust the endpoint/model if Google updates their API.)
-const GEMINI_BASE_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
+// Set your Gemini model here (you can change this to gemini-2.0-flash if available)
+const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-1.5-flash';
+// Gemini API base URL
+const GEMINI_BASE_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 
 async function processEmailWithGemini(emailData) {
-  // Build the prompt using email details
+  // Updated prompt with strict instructions
   const prompt = `
 Extract the following details from the email:
 - Event Name (if any)
@@ -23,45 +25,42 @@ Subject: ${emailData.subject}
 From: ${emailData.from}
 Date: ${emailData.date}
 Snippet: ${emailData.snippet}
-
-Return the result as JSON in this format:
+Return strictly valid JSON in the following format (use null **without quotes** for missing fields):
 {
-  "eventName": "Event Name",
-  "eventDate": "Event Date",
-  "deadline": "Deadline",
-  "details": "Additional Details"
+  "eventName": "Event Name or null",
+  "eventDate": "Event Date or null",
+  "deadline": "Deadline or null",
+  "details": "Additional Details or null"
 }
+Do not include any markdown formatting, explanations, or extra text.
   `;
   
   console.log("Sending prompt to Gemini:", prompt);
   await handleRateLimit();
   
   try {
-    // Build the URL with your Gemini API key as a query parameter
     const url = `${GEMINI_BASE_URL}?key=${process.env.GEMINI_API_KEY}`;
     const requestBody = {
       contents: [
         {
-          parts: [
-            { text: prompt }
-          ]
+          role: "user",
+          parts: [{ text: prompt }]
         }
       ]
     };
 
-    const response = await axios.post(
-      url,
-      requestBody,
-      {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
-    );
+    const response = await axios.post(url, requestBody, {
+      headers: { 'Content-Type': 'application/json' },
+    });
     
-    // Assume Gemini returns an array of candidates under response.data.candidates.
-    // Adjust the extraction based on the actual API response.
-    const rawOutput = response.data.candidates[0].output.trim();
+    if (!response.data || !response.data.candidates || response.data.candidates.length === 0) {
+      console.error("Invalid Gemini API response:", response.data);
+      return {};
+    }
+    
+    // Extract raw output; also remove any markdown/code fences if present
+    let rawOutput = response.data.candidates[0]?.content?.parts[0]?.text || "";
+    rawOutput = rawOutput.replace(/```json\s*/g, '').replace(/```/g, '').trim();
     console.log("Raw Gemini output:", rawOutput);
     
     let structuredData;
@@ -69,14 +68,20 @@ Return the result as JSON in this format:
       structuredData = JSON.parse(rawOutput);
     } catch (jsonError) {
       console.error("JSON parse error in Gemini output. Raw output:", rawOutput);
-      // Return empty object so caller can skip this email.
       return {};
+    }
+    
+    // Post-process: Convert string "null" values to actual null.
+    for (const key in structuredData) {
+      if (typeof structuredData[key] === 'string' && structuredData[key].toLowerCase() === "null") {
+        structuredData[key] = null;
+      }
     }
     
     return structuredData;
   } catch (error) {
     console.error("Error processing email with Gemini:", error.response?.data || error.message);
-    throw error;
+    return {};
   }
 }
 
